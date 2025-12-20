@@ -1,0 +1,27 @@
+@prefix : <http://www.example.org/ecole#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Etablissement rdf:type rdfs:Class .
+:Personne rdf:type rdfs:Class .
+:Professeur rdf:type rdfs:Class ; rdfs:subClassOf :Personne .
+:Etudiant rdf:type rdfs:Class ; rdfs:subClassOf :Personne .
+:Filiere rdf:type rdfs:Class .
+:Matiere rdf:type rdfs:Class .
+:ChefFiliere rdf:type rdfs:Class ; rdfs:subClassOf :Professeur .
+
+:enseigne rdf:type rdf:Property ;
+          rdfs:domain :Professeur ;
+          rdfs:range :Matiere .
+
+:etudie rdf:type rdf:Property ;
+        rdfs:domain :Etudiant ;
+        rdfs:range :Matiere .
+
+:dirige rdf:type rdf:Property ;
+        rdfs:domain :ChefFiliere ;
+        rdfs:range :Filiere .
+
+:Etudiant owl:disjointWith :Professeur .
